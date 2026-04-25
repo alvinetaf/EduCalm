@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "source": "Cohen (PSS)",
+    "texte": "Cette semaine, as-tu eu l'impression que tes devoirs s'accumulaient sans que tu puisses les terminer ?",
+    "options": [
+      { "label": "Jamais", "points": 0 },
+      { "label": "Parfois", "points": 1 },
+      { "label": "Souvent", "points": 2 },
+      { "label": "Tout le temps", "points": 3 }
+    ]
+  },
+  {
+    "id": 2,
+    "source": "Gadzella (SSI)",
+    "texte": "Ressens-tu de la fatigue physique ou des maux de tête à cause de la pression des cours ?",
+    "options": [
+      { "label": "Pas du tout", "points": 0 },
+      { "label": "Un peu", "points": 1 },
+      { "label": "Beaucoup", "points": 2 },
+      { "label": "Énormément", "points": 3 }
+    ]
+  },
+  {
+    "id": 3,
+    "source": "Lovibond (DASS)",
+    "texte": "As-tu l'impression d'être plus impatient(e) ou irritable avec tes camarades que d'habitude ?",
+    "options": [
+      { "label": "Non, pas plus", "points": 0 },
+      { "label": "Un petit peu", "points": 1 },
+      { "label": "Oui, souvent", "points": 2 },
+      { "label": "Oui, tout à fait", "points": 3 }
+    ]
+  },
+  {
+    "id": 4,
+    "source": "Lovibond (DASS)",
+    "texte": "As-tu du mal à te détendre et à calmer tes pensées après une journée d'école ?",
+    "options": [
+      { "label": "Je coupe facilement", "points": 0 },
+      { "label": "Parfois difficile", "points": 1 },
+      { "label": "C'est très dur", "points": 2 },
+      { "label": "Impossible", "points": 3 }
+    ]
+  }
+]

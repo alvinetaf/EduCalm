@@ -1,0 +1,26 @@
+/* src/index.css */
+body {
+  margin: 0;
+  padding: 0;
+  /* La couleur de l'écran de l'ordinateur derrière l'application (un gris très foncé) */
+  background-color: #1e293b; 
+  /* La couleur du texte par défaut (noir/gris foncé) pour qu'il soit visible ! */
+  color: #0f172a; 
+  font-family: system-ui, -apple-system, sans-serif;
+  
+  /* Ces 3 lignes permettent de centrer ton application mobile au beau milieu de ton écran d'ordinateur */
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* On enlève les soulignements moches sur nos liens de navigation */
+a {
+  text-decoration: none;
+}

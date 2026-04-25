@@ -1,0 +1,22 @@
+{
+    "name": "EduCalm - Pleine Conscience",
+    "short_name": "EduCalm",
+    "description": "Ton espace de sérénité au quotidien.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FAFAF9",
+    "theme_color": "#14532D",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "https://placehold.co/192x192/14532D/FFFFFF.png?text=Edu",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "https://placehold.co/512x512/14532D/FFFFFF.png?text=EduCalm",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
