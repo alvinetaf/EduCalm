@@ -1,75 +1,120 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, BrainCircuit, HeartHandshake } from 'lucide-react';
-// Ton image locale est bien conservée !
+import { useNavigate } from 'react-router-dom';
+import { Leaf, BrainCircuit, HeartHandshake, ArrowRight, Smile, Headphones } from 'lucide-react';
 import monImageAccueil from '../images/app_illustration_home.jpg';
+import './Accueil.css'; // Importation du CSS
 
 const Accueil = () => {
-  // 1. On prépare une variable pour le pseudo
   const [pseudo, setPseudo] = useState('Élève');
+  const navigate = useNavigate();
 
-  // 2. Quand la page s'allume, on va chercher le vrai nom dans la mémoire du téléphone
   useEffect(() => {
     const nomSauvegarde = localStorage.getItem('userPseudo');
-    if (nomSauvegarde) {
-      setPseudo(nomSauvegarde);
-    }
+    if (nomSauvegarde) setPseudo(nomSauvegarde);
   }, []);
 
+  const hour = new Date().getHours();
+  const salutation = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
+
   return (
-    <div style={styles.container}>
-      {/* LA MAGNIFIQUE IMAGE D'ACCUEIL */}
-      <div style={styles.imageWrapper}>
-        <img 
-          src={monImageAccueil} 
-          alt="Nature apaisante du Cameroun"
-          style={styles.mainImage}
-        />
-        <div style={styles.imageOverlay}></div>
+    <div className="accueil-container">
+
+      {/* HERO SECTION */}
+      <div className="hero-section">
+        <div className="hero-content">
+          <p className="salutation-text">{salutation},</p>
+          <h1 className="hero-name">
+            <span className="pseudo-highlight">{pseudo}</span> 👋
+          </h1>
+          <p className="hero-subtitle">
+            Laisse tes soucis de classe à la porte. Ici, c'est ton refuge pour respirer et te détendre.
+          </p>
+          <div className="hero-buttons">
+            <button className="primary-btn" onClick={() => navigate('/humeur')}>
+              <Smile size={18} />
+              Faire mon bilan du jour
+            </button>
+            <button className="secondary-btn" onClick={() => navigate('/exercices')}>
+              <Headphones size={18} />
+              Écouter une séance
+            </button>
+          </div>
+        </div>
+        <div className="hero-image-wrapper">
+          <img src={monImageAccueil} alt="Nature apaisante du Cameroun" className="hero-image" />
+          <div className="image-overlay"></div>
+        </div>
       </div>
 
-      <div style={styles.header}>
-        {/* 👇 C'est ici que la magie opère avec {pseudo} 👇 */}
-        <h1 style={styles.greeting}>Bonjour, <span style={styles.pseudo}>{pseudo}</span></h1>
-        <p style={styles.subtitle}>Prêt(e) pour un moment de calme ?</p>
+      {/* URGENCES CALME */}
+      <h2 className="section-title">Tes urgences calme</h2>
+      <div className="cards-grid">
+        <div
+          className="quick-card"
+          style={{ borderColor: '#D1FAE5' }}
+          onClick={() => navigate('/exercices')}
+        >
+          <div className="card-icon-box" style={{ backgroundColor: '#D1FAE5' }}>
+            <BrainCircuit size={26} color="#14532D" />
+          </div>
+          <div className="card-body">
+            <h3 className="card-title">5 min pour me concentrer</h3>
+            <p className="card-desc">
+              Une courte séance de pleine conscience pour retrouver le focus avant un cours.
+            </p>
+          </div>
+          <ArrowRight size={18} color="#14532D" style={{ flexShrink: 0 }} />
+        </div>
+
+        <div
+          className="quick-card"
+          style={{ borderColor: '#FEF3C7' }}
+          onClick={() => navigate('/humeur')}
+        >
+          <div className="card-icon-box" style={{ backgroundColor: '#FEF3C7' }}>
+            <HeartHandshake size={26} color="#D97706" />
+          </div>
+          <div className="card-body">
+            <h3 className="card-title">Respirer avant un devoir</h3>
+            <p className="card-desc">
+              Évalue ton humeur et reçois un exercice adapté à ton niveau de stress.
+            </p>
+          </div>
+          <ArrowRight size={18} color="#D97706" style={{ flexShrink: 0 }} />
+        </div>
+
+        <div
+          className="quick-card"
+          style={{ borderColor: '#D1FAE5' }}
+          onClick={() => navigate('/exercices')}
+        >
+          <div className="card-icon-box" style={{ backgroundColor: '#D1FAE5' }}>
+            <Leaf size={26} color="#14532D" />
+          </div>
+          <div className="card-body">
+            <h3 className="card-title">Pause détente guidée</h3>
+            <p className="card-desc">
+              Laisse-toi guider par une voix apaisante pour te relaxer entre deux cours.
+            </p>
+          </div>
+          <ArrowRight size={18} color="#14532D" style={{ flexShrink: 0 }} />
+        </div>
       </div>
 
-      <div style={styles.introBox}>
-        <Leaf size={24} color="#D97706" style={{ marginBottom: '10px' }} />
-        <p style={styles.introText}>
-          Laisse tes soucis de classe à la porte. Ici, c'est ton refuge pour respirer et te détendre.
-        </p>
+      {/* INTRO */}
+      <div className="intro-box">
+        <Leaf size={28} color="#D97706" style={{ flexShrink: 0 }} />
+        <div>
+          <h3 className="intro-title">Bienvenue sur EduCalm</h3>
+          <p className="intro-text">
+            Ton espace personnel pour gérer le stress scolaire. Fais un bilan émotionnel,
+            écoute des exercices de relaxation et suis ton évolution au fil du temps.
+          </p>
+        </div>
       </div>
 
-      <h3 style={styles.sectionTitle}>Tes urgences calme</h3>
-      <div style={styles.quickAccess}>
-        <button style={styles.quickButton}>
-          <BrainCircuit size={20} color="#14532D" />
-          5 min pour me concentrer
-        </button>
-        <button style={styles.quickButton}>
-          <HeartHandshake size={20} color="#14532D" />
-          Respirer avant un devoir
-        </button>
-      </div>
     </div>
   );
-};
-
-// Styles CSS complets de l'Accueil
-const styles = {
-  container: { padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#FAFAF9', minHeight: '100vh' },
-  imageWrapper: { width: '100%', height: '220px', borderRadius: '24px', marginBottom: '20px', marginTop: '-10px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(20, 83, 45, 0.2)', position: 'relative' },
-  mainImage: { width: '100%', height: '100%', objectFit: 'cover' },
-  imageOverlay: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(20,83,45,0.4) 100%)' },
-  header: { textAlign: 'center', marginBottom: '25px', width: '100%' },
-  greeting: { fontSize: '28px', color: '#422006', margin: '0 0 5px 0', fontWeight: '800' },
-  pseudo: { color: '#D97706' },
-  subtitle: { fontSize: '15px', color: '#78350F', margin: 0, fontWeight: '500' },
-  introBox: { backgroundColor: '#FFFFFF', padding: '20px', borderRadius: '20px', textAlign: 'center', marginBottom: '30px', boxShadow: '0 4px 15px rgba(217, 119, 6, 0.08)', border: '1px solid #FEF3C7', display: 'flex', flexDirection: 'column', alignItems: 'center' },
-  introText: { color: '#52525B', fontSize: '14px', lineHeight: '1.6', margin: 0 },
-  sectionTitle: { fontSize: '18px', color: '#422006', marginBottom: '15px', width: '100%', fontWeight: '700' },
-  quickAccess: { display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', paddingBottom: '80px' },
-  quickButton: { display: 'flex', alignItems: 'center', gap: '15px', padding: '18px', borderRadius: '16px', backgroundColor: '#FFFFFF', color: '#14532D', border: '2px solid #D1FAE5', fontSize: '15px', fontWeight: '600', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s ease', boxShadow: '0 2px 5px rgba(20, 83, 45, 0.05)' }
 };
 
 export default Accueil;

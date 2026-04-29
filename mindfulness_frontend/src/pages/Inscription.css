@@ -1,0 +1,195 @@
+/* Inscription.css */
+
+.inscription-page {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  /* Panneau Gauche (Image) */
+  .left-panel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+  
+  .bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .left-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(20,83,45,0.75) 0%, rgba(20,83,45,0.5) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+  
+  .brand-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .logo-icon {
+    background-color: rgba(255,255,255,0.2);
+    padding: 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  
+  .brand-name {
+    margin: 0 0 12px 0;
+    color: #FFFFFF;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  
+  .brand-tagline {
+    margin: 0;
+    color: rgba(255,255,255,0.85);
+    font-size: 18px;
+    font-weight: 400;
+    max-width: 300px;
+    line-height: 1.6;
+  }
+  
+  /* Panneau Droit (Formulaire) */
+  .right-panel {
+    width: 520px;
+    flex-shrink: 0;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.06);
+    overflow-y: auto;
+  }
+  
+  .form-wrapper {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .title {
+    margin: 0 0 8px 0;
+    color: #14532D;
+    font-size: 28px;
+    font-weight: 800;
+  }
+  
+  .subtitle {
+    margin: 0 0 28px 0;
+    color: #78350F;
+    font-size: 15px;
+  }
+  
+  .message-box {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid;
+    line-height: 1.5;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #422006;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid #D1FAE5;
+    background-color: #FAFAF9;
+    font-size: 15px;
+    outline: none;
+    color: #422006;
+    transition: border-color 0.2s ease;
+  }
+  
+  .input-field:focus {
+    border-color: #14532D;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #D97706;
+    color: #FFFFFF;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    box-shadow: 0 4px 16px rgba(217, 119, 6, 0.3);
+    transition: opacity 0.2s ease;
+  }
+  
+  .footer-text {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #52525B;
+    text-align: center;
+  }
+  
+  .link-text {
+    color: #D97706;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  /* =========================================
+     ADAPTATION MOBILE (RESPONSIVE)
+     ========================================= */
+  @media (max-width: 768px) {
+    .left-panel {
+      display: none; /* Cache l'image sur téléphone */
+    }
+    
+    .right-panel {
+      width: 100%; /* Le formulaire prend toute la largeur */
+      padding: 24px; /* Marges réduites pour les petits écrans */
+      box-shadow: none;
+    }
+  
+    .form-row {
+      flex-direction: column; /* L'âge et la classe s'empilent sur téléphone */
+      gap: 16px;
+    }
+  }

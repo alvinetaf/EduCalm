@@ -1,0 +1,383 @@
+/* Exercices.css */
+
+.exercices-container {
+    padding: 40px 48px;
+    background-color: #F8FAF8; /* Retour au thème clair */
+    min-height: 100vh;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  .page-header {
+    margin-bottom: 36px;
+  }
+  
+  .title {
+    font-size: 32px;
+    color: #422006;
+    margin: 0 0 8px 0;
+    font-weight: 800;
+  }
+  
+  .subtitle {
+    font-size: 15px;
+    color: #78350F;
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .loading-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+  }
+  
+  .loading-text {
+    color: #78350F;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    padding-bottom: 120px;
+  }
+  
+  .exo-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: #FFFFFF; /* Cartes blanches */
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  
+  .exo-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .thumbnail {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(20, 83, 45, 0.15);
+    border: 2px solid #D1FAE5;
+  }
+  
+  .card-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .card-title {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    color: #14532D;
+    font-weight: 700;
+  }
+  
+  .card-desc {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    color: #52525B;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .card-meta {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    color: #D97706;
+    font-weight: 700;
+    background-color: #FEF3C7;
+    padding: 4px 10px;
+    border-radius: 12px;
+  }
+  
+  .play-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(20, 83, 45, 0.2);
+  }
+  
+  .play-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* =========================================
+     LECTEUR FLOTTANT & ANIMATION RESPIRATION
+     ========================================= */
+  .floating-player {
+    position: fixed;
+    bottom: 24px;
+    right: 32px;
+    width: 380px;
+    background-color: #14532D; /* Reste vert sombre pour contraster joliment en bas */
+    border-radius: 20px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(20, 83, 45, 0.35);
+    z-index: 900;
+    animation: slideUp 0.3s ease;
+  }
+  
+  .player-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .player-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .player-status {
+    margin: 0;
+    font-size: 12px;
+    color: #D1FAE5;
+  }
+  
+  .player-toggle {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 12px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .player-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* --- L'ANIMATION DE RESPIRATION --- */
+  .breathing-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(217, 119, 6, 0.15); 
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+  
+  .is-breathing {
+    animation: breathe 8s ease-in-out infinite; 
+  }
+  
+  @keyframes breathe {
+    0% {
+      transform: scale(0.8);
+      background-color: rgba(217, 119, 6, 0.1);
+    }
+    50% {
+      transform: scale(1.3);
+      background-color: rgba(217, 119, 6, 0.4);
+    }
+    100% {
+      transform: scale(0.8);
+      background-color: rgba(217, 119, 6, 0.1);
+    }
+  }
+  
+  /* =========================================
+     ADAPTATION MOBILE
+     ========================================= */
+  @media (max-width: 768px) {
+    .exercices-container {
+      padding: 20px;
+    }
+    
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .floating-player {
+      bottom: 16px;
+      right: 16px;
+      left: 16px;
+      width: auto;
+    }
+  }
+  /* =========================================
+   LECTEUR PLEIN ÉCRAN IMMERSIF
+   ========================================= */
+.fullscreen-player {
+    position: fixed;
+    inset: 0; /* Prend tout l'écran */
+    background-color: #022C22; /* Fond vert nuit très profond */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .player-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .player-title-large {
+    font-size: 32px;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+    font-weight: 800;
+  }
+  
+  .player-status-large {
+    font-size: 18px;
+    color: #34D399;
+    margin: 0;
+  }
+  
+  /* --- LE GRAND CERCLE DE RESPIRATION --- */
+  .breathing-circle-large {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px; /* Beaucoup plus grand ! */
+    height: 250px;
+    border-radius: 50%;
+    background-color: rgba(52, 211, 153, 0.1); /* Halot vert clair */
+    margin-bottom: 60px;
+    box-shadow: 0 0 40px rgba(52, 211, 153, 0.2);
+  }
+  
+  .is-breathing-large {
+    animation: breatheLarge 8s ease-in-out infinite; 
+  }
+  
+  @keyframes breatheLarge {
+    0% {
+      transform: scale(0.8);
+      background-color: rgba(52, 211, 153, 0.1);
+    }
+    50% {
+      transform: scale(1.5); /* Gonfle énormément (Inspiration) */
+      background-color: rgba(52, 211, 153, 0.3);
+    }
+    100% {
+      transform: scale(0.8); /* Dégonfle (Expiration) */
+      background-color: rgba(52, 211, 153, 0.1);
+    }
+  }
+  
+  /* Image de méditation statique (pour les autres exercices) */
+  .meditation-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 60px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+  }
+  
+  .controls-large {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .player-toggle-large {
+    background-color: #D97706;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+  }
+  
+  .player-toggle-large:hover {
+    transform: scale(1.05);
+  }
+  /* --- TEXTE SOUS LE CERCLE DE RESPIRATION --- */
+.breath-instruction {
+    font-size: 32px; /* Texte beaucoup plus grand */
+    color: #FFFFFF; /* Blanc pur pour un contraste parfait */
+    font-weight: 800;
+    margin-top: 24px;
+    text-align: center;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre pour faire ressortir le texte */
+    transition: opacity 0.5s ease;
+  }
+  
+  /* --- BOÎTE DE TEXTE POUR LA MÉDITATION GUIDÉE --- */
+  .meditation-text-container {
+    background-color: rgba(0, 0, 0, 0.4); /* Fond noir semi-transparent pour détacher du vert */
+    border-left: 6px solid #D97706; /* Grosse bordure orange */
+    padding: 32px;
+    border-radius: 0 16px 16px 0;
+    max-width: 600px;
+    margin-top: 30px;
+    text-align: left;
+    color: #FFFFFF; /* Texte en blanc pur */
+  }
+  
+  .meditation-step {
+    margin-bottom: 20px;
+    font-size: 18px; /* Texte plus grand pour faciliter la lecture */
+    line-height: 1.6;
+  }
+  
+  .meditation-step strong {
+    color: #FDE68A; /* Les numéros (1, 2, 3) en Jaune clair très visible */
+  }

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "source": "Cohen (PSS)",
-    "texte": "Cette semaine, as-tu eu l'impression que tes devoirs s'accumulaient sans que tu puisses les terminer ?",
+    "texte": "Ces jours-ci, as-tu l'impression que les cours et les devoirs te dépassent et que tu n'arrives pas à tout gérer ?",
     "options": [
       { "label": "Jamais", "points": 0 },
       { "label": "Parfois", "points": 1 },
@@ -13,10 +13,10 @@
   {
     "id": 2,
     "source": "Gadzella (SSI)",
-    "texte": "Ressens-tu de la fatigue physique ou des maux de tête à cause de la pression des cours ?",
+    "texte": "Est-ce que la pression de l'école te fatigue au point de te donner des maux de tête ou de te sentir physiquement épuisé(e) ?",
     "options": [
       { "label": "Pas du tout", "points": 0 },
-      { "label": "Un peu", "points": 1 },
+      { "label": "Juste un peu", "points": 1 },
       { "label": "Beaucoup", "points": 2 },
       { "label": "Énormément", "points": 3 }
     ]
@@ -24,23 +24,23 @@
   {
     "id": 3,
     "source": "Lovibond (DASS)",
-    "texte": "As-tu l'impression d'être plus impatient(e) ou irritable avec tes camarades que d'habitude ?",
+    "texte": "As-tu remarqué que tu t'énerves plus vite ou que les autres t'agacent plus facilement que d'habitude ?",
     "options": [
-      { "label": "Non, pas plus", "points": 0 },
-      { "label": "Un petit peu", "points": 1 },
+      { "label": "Pas du tout", "points": 0 },
+      { "label": "Un peu seulement", "points": 1 },
       { "label": "Oui, souvent", "points": 2 },
-      { "label": "Oui, tout à fait", "points": 3 }
+      { "label": "Oui, tout le temps", "points": 3 }
     ]
   },
   {
     "id": 4,
     "source": "Lovibond (DASS)",
-    "texte": "As-tu du mal à te détendre et à calmer tes pensées après une journée d'école ?",
+    "texte": "Quand tu rentres de l'école, as-tu du mal à relâcher la pression et à arrêter de trop réfléchir ?",
     "options": [
-      { "label": "Je coupe facilement", "points": 0 },
-      { "label": "Parfois difficile", "points": 1 },
+      { "label": "J'y arrive facilement", "points": 0 },
+      { "label": "C'est parfois difficile", "points": 1 },
       { "label": "C'est très dur", "points": 2 },
-      { "label": "Impossible", "points": 3 }
+      { "label": "Je n'y arrive pas du tout", "points": 3 }
     ]
   }
 ]
