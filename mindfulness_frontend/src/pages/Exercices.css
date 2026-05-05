@@ -40,25 +40,69 @@
   
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 20px;
+    /* On agrandit la largeur minimum des cartes pour bien remplir l'écran */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px; /* On augmente l'espace entre les cartes pour aérer */
     padding-bottom: 120px;
   }
   
   .exo-card {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    background-color: #FFFFFF; /* Cartes blanches */
-    padding: 20px;
-    border-radius: 20px;
-    border: 2px solid;
+    flex-direction: column; /* Le secret est ici : les éléments s'empilent de haut en bas */
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden; /* Pour que la grande image suive l'arrondi de la carte en haut */
+    border: 2px solid #FEF3C7;
     cursor: pointer;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 8px 24px rgba(20, 83, 45, 0.04);
   }
   
   .exo-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-6px); /* Effet de soulèvement plus marqué au survol */
+    box-shadow: 0 12px 32px rgba(20, 83, 45, 0.1);
+  }
+  
+  .cover-image {
+    width: 100%;
+    height: 200px; /* L'image devient très grande et imposante */
+    object-fit: cover;
+    border-bottom: 4px solid #D1FAE5; /* Petite ligne colorée pour séparer l'image du texte */
+  }
+  
+  .card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .card-title {
+    margin: 0 0 10px 0;
+    font-size: 20px; /* Titre plus gros */
+    color: #14532D;
+    font-weight: 800;
+  }
+  
+  .card-desc {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    color: #52525B;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* On permet 3 lignes de description au lieu de 2 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+  }
+  
+  /* Zone du bas de la carte pour aligner le temps et le bouton Play */
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #F3F4F6; /* Ligne de séparation très discrète */
   }
   
   .thumbnail {
@@ -76,23 +120,6 @@
     min-width: 0;
   }
   
-  .card-title {
-    margin: 0 0 6px 0;
-    font-size: 16px;
-    color: #14532D;
-    font-weight: 700;
-  }
-  
-  .card-desc {
-    margin: 0 0 10px 0;
-    font-size: 13px;
-    color: #52525B;
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
   
   .card-meta {
     display: inline-flex;
