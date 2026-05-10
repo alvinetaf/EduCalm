@@ -6,7 +6,7 @@ import './Exercices.css';
 
 // Tes imports d'images
 import imageBodyScan from "../images/body_scan.jpg";
-// import imageRespiration from "../images/respiration.jpg";
+import imageRespiration from "../images/respiration.jpg";
 import imageMeditation from "../images/meditation.jpg";
 import imageAttention from "../images/attention.jpg";
 import imageMarche from "../images/marche.jpg";
@@ -61,7 +61,7 @@ const Exercices = () => {
     
     if (titreMinuscule.includes('respiration')) {
       // Un lien internet direct vers une image apaisante
-      return "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop"; 
+      return imageRespiration; 
     } 
     else if (titreMinuscule.includes('méditation') || titreMinuscule.includes('meditation')) {
       return imageMeditation;
@@ -70,7 +70,7 @@ const Exercices = () => {
       return imageBodyScan; // On garde la belle image que tu as déjà mise dans ton dossier !
     } 
     else if (titreMinuscule.includes('marche')) {
-      return "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&h=400&fit=crop";
+      return imageMarche;
     }
     
     return imageAttention; 
