@@ -9,7 +9,7 @@ import imageBodyScan from "../images/body_scan.jpg";
 // import imageRespiration from "../images/respiration.jpg";
 import imageMeditation from "../images/meditation.jpg";
 import imageAttention from "../images/attention.jpg";
-// import imageMarche from "../images/marche.jpg";
+import imageMarche from "../images/marche.jpg";
 
 const Exercices = () => {
   const [exercicesList, setExercicesList] = useState([]);
@@ -19,6 +19,7 @@ const Exercices = () => {
   
   const [breathText, setBreathText] = useState('Prêt(e) ? Clique sur Play.');
   const [scanStepIndex, setScanStepIndex] = useState(0);
+  const [walkingStepIndex, setWalkingStepIndex] = useState(0);
 
   const audioRef = useRef(null);
   const location = useLocation();
@@ -31,6 +32,27 @@ const Exercices = () => {
     "5. Remonte doucement vers ton ventre. Sens-le se gonfler.",
     "6. Relâche tes épaules, ton cou, et les muscles de ton visage.",
     "7. Prends une dernière respiration... Tu peux ouvrir les yeux."
+  ];
+  const walkingSteps = [
+    "1. Tiens-toi debout calmement et relâche les épaules.",
+    
+    "2. Inspire profondément... puis expire lentement.",
+    
+    "3. Commence à marcher doucement, sans te presser.",
+    
+    "4. Sens le contact de tes pieds avec le sol.",
+    
+    "5. Observe le mouvement de ton corps à chaque pas.",
+    
+    "6. Si ton esprit se disperse, ramène doucement ton attention à la marche.",
+    
+    "7. Écoute les sons autour de toi sans les juger.",
+    
+    "8. Ressens ta respiration pendant le mouvement.",
+    
+    "9. Continue quelques instants dans le calme.",
+    
+    "10. Arrête-toi doucement et remercie-toi pour ce moment."
   ];
 
   // La fonction qui distribue les images
@@ -77,7 +99,7 @@ const Exercices = () => {
     // SÉCURITÉ : On vérifie que activeExo existe avant de lire son titre
     const isRespiration = activeExo ? activeExo.title.toLowerCase().includes('respiration') : false;
     const isBodyScan = activeExo ? (activeExo.title.toLowerCase().includes('scan') || activeExo.title.toLowerCase().includes('corps')) : false;
-
+    const isWalking = activeExo ? activeExo.title.toLowerCase().includes('marche') : false;
     if (isPlaying) {
       if (isRespiration) {
         const runBreathCycle = () => {
@@ -98,6 +120,16 @@ const Exercices = () => {
           });
         }, 15000); // 15 secondes pour ton audio lent
       }
+      else if (isWalking) {
+        interval = setInterval(() => {
+          setWalkingStepIndex((prevIndex) => {
+            if (prevIndex < walkingSteps.length - 1) {
+              return prevIndex + 1;
+            }
+            return prevIndex;
+          });
+        }, 12000);
+      }
     } else {
       if (isRespiration) setBreathText('En pause. Clique sur Play.');
     }
@@ -114,6 +146,7 @@ const Exercices = () => {
       setActiveExo(exo);
       setIsPlaying(true);
       setScanStepIndex(0);
+      setWalkingStepIndex(0);
       setTimeout(() => audioRef.current?.play(), 100);
     } else {
       if (isPlaying) {
@@ -131,6 +164,7 @@ const Exercices = () => {
     audioRef.current?.pause();
     setActiveExo(null);
     setScanStepIndex(0);
+    setWalkingStepIndex(0);
   };
 
   // LE FAMEUX RETURN QUI POSAIT PROBLÈME EST BIEN À L'INTÉRIEUR DE LA FONCTION MAINTENANT
@@ -211,25 +245,92 @@ const Exercices = () => {
           </div>
 
           {activeExo.title.toLowerCase().includes('respiration') ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div className={`breathing-circle-large ${isPlaying ? 'is-breathing-large' : ''}`}>
-                 <Wind size={64} color={isPlaying ? "#D97706" : "#34D399"} />
-              </div>
-              <p className="breath-instruction">{breathText}</p>
+
+          // ===== RESPIRATION =====
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            
+            <div className={`breathing-circle-large ${isPlaying ? 'is-breathing-large' : ''}`}>
+              <Wind size={64} color={isPlaying ? "#D97706" : "#34D399"} />
             </div>
+
+            <p className="breath-instruction">
+              {breathText}
+            </p>
+
+          </div>
+
+          ) : activeExo.title.toLowerCase().includes('marche') ? (
+
+          // ===== MARCHE CONSCIENTE =====
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}>
+            
+            <img
+              src={obtenirImagePourExercice(activeExo.title)}
+              alt="Marche consciente"
+              className="meditation-image"
+            />
+
+            <div
+              style={{
+                marginTop: '20px',
+                background: '#ffffffcc',
+                padding: '20px',
+                borderRadius: '20px',
+                maxWidth: '700px'
+              }}
+            >
+              <p style={{
+                fontSize: '24px',
+                fontWeight: '600',
+                textAlign: 'center',
+                color: '#14532D',
+                lineHeight: '1.8'
+              }}>
+                {walkingSteps[walkingStepIndex]}
+              </p>
+            </div>
+
+          </div>
+
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img 
-                src={obtenirImagePourExercice(activeExo.title)} 
-                alt="Méditation" 
-                className="meditation-image"
-              />
-              <div className="meditation-text-container" style={{ marginTop: '20px', minHeight: '120px', display: 'flex', alignItems: 'center' }}>
-                <div className="meditation-step" style={{ margin: 0, fontSize: '22px', textAlign: 'center', fontWeight: '600' }}>
-                  {bodyScanSteps[scanStepIndex]}
-                </div>
+
+          // ===== BODY SCAN / MEDITATION =====
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            
+            <img
+              src={obtenirImagePourExercice(activeExo.title)}
+              alt="Méditation"
+              className="meditation-image"
+            />
+
+            <div
+              className="meditation-text-container"
+              style={{
+                marginTop: '20px',
+                minHeight: '120px',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <div
+                className="meditation-step"
+                style={{
+                  margin: 0,
+                  fontSize: '22px',
+                  textAlign: 'center',
+                  fontWeight: '600'
+                }}
+              >
+                {bodyScanSteps[scanStepIndex]}
               </div>
             </div>
+
+          </div>
+
           )}
 
           <div className="controls-large" style={{ marginTop: '40px' }}>
